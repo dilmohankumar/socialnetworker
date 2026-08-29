@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="400" viewBox="0 0 640 400">
+  <defs><linearGradient id="quality-engineering-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#6E2FA8" />
+    <stop offset="100%" stop-color="#100E33" />
+  </linearGradient></defs>
+  <rect width="100%" height="100%" fill="url(#quality-engineering-grad)" />
+  <g stroke="rgba(255,255,255,0.15)" stroke-width="1.5">
+    <line x1="10%" y1="20%" x2="35%" y2="45%" />
+    <line x1="35%" y1="45%" x2="65%" y2="30%" />
+    <line x1="65%" y1="30%" x2="90%" y2="55%" />
+    <line x1="35%" y1="45%" x2="55%" y2="75%" />
+  </g>
+  <g fill="rgba(255,255,255,0.5)">
+    <circle cx="10%" cy="20%" r="5" />
+    <circle cx="35%" cy="45%" r="8" />
+    <circle cx="65%" cy="30%" r="6" />
+    <circle cx="90%" cy="55%" r="5" />
+    <circle cx="55%" cy="75%" r="4" />
+  </g>
+  <g transform="translate(320, 200)" fill="#ffffff" fill-opacity="0.95">
+    <path d="M -25 -50 L 25 -50 L 25 20 L 0 50 L -25 20 Z" fill="none" stroke="#fff" stroke-width="6"/><path d="M -12 -2 L -3 10 L 15 -18" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
