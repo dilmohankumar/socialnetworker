@@ -1,0 +1,11 @@
+# Single-page app: send every non-file URL to index.html so /services/seo etc. work on refresh
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  # Leave the Node API (mounted at /api) alone
+  RewriteRule ^api(/|$) - [L]
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>

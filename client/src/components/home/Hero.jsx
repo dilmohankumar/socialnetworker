@@ -1,52 +1,51 @@
 import Container from '../common/Container.jsx';
 import Button from '../common/Button.jsx';
-import { heroContent } from '../../data/mockData.js';
 
 /**
- * Lightweight inline SVG standing in for the "network of people" illustration
- * on the right of the reference hero. Swap for a real illustration/photo in
- * src/assets when available — layout and positioning stay the same.
+ * Decorative growth chart + KPI cards. The numbers shown are the metrics
+ * stored in settings.hero.metrics; the curve itself is illustrative only.
  */
-function NetworkIllustration() {
-  const nodes = [
-    { x: 250, y: 40, r: 8 }, { x: 60, y: 90, r: 22 }, { x: 340, y: 90, r: 22 },
-    { x: 150, y: 150, r: 30 }, { x: 260, y: 190, r: 44 }, { x: 40, y: 240, r: 30 },
-    { x: 340, y: 250, r: 26 }, { x: 150, y: 300, r: 24 }, { x: 290, y: 330, r: 18 },
-    { x: 80, y: 350, r: 16 },
-  ];
-  const edges = [
-    [0, 2], [1, 3], [2, 6], [3, 4], [1, 5], [4, 6], [3, 5], [4, 7], [6, 8], [5, 9], [7, 9], [4, 8],
-  ];
-
+function GrowthPanel({ metrics = [] }) {
   return (
-    <svg viewBox="0 0 400 400" className="h-full w-full max-w-md" aria-hidden="true">
-      {edges.map(([a, b], i) => (
-        <line
-          key={i}
-          x1={nodes[a].x} y1={nodes[a].y} x2={nodes[b].x} y2={nodes[b].y}
-          stroke="rgba(255,255,255,0.25)" strokeWidth="1"
-        />
-      ))}
-      {nodes.map((n, i) => (
-        <circle
-          key={i}
-          cx={n.x} cy={n.y} r={n.r}
-          fill="rgba(255,255,255,0.08)"
-          stroke="rgba(255,255,255,0.35)"
-          strokeWidth="1.5"
-        />
-      ))}
-      {[3, 4, 5].map((idx) => (
-        <circle key={idx} cx={nodes[idx].x} cy={nodes[idx].y} r={nodes[idx].r - 6} fill="#ffffff" opacity="0.9" />
-      ))}
-    </svg>
+    <div className="relative w-full max-w-md">
+      <div className="rounded-2xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="text-sm font-medium text-white/80">Performance overview</span>
+          <span className="rounded-full bg-green-400/20 px-2.5 py-1 text-xs font-semibold text-green-300">Live</span>
+        </div>
+        <svg viewBox="0 0 320 140" className="h-36 w-full" role="img" aria-label="Upward growth chart">
+          <defs>
+            <linearGradient id="heroFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="#E1552D" stopOpacity="0.45" />
+              <stop offset="100%" stopColor="#E1552D" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M0 120 C40 112 60 118 90 96 S150 80 180 62 S250 40 320 12 L320 140 L0 140 Z" fill="url(#heroFill)" />
+          <path d="M0 120 C40 112 60 118 90 96 S150 80 180 62 S250 40 320 12" fill="none" stroke="#E1552D" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="320" cy="12" r="5" fill="#fff" />
+        </svg>
+      </div>
+
+      <div className="mt-4 grid grid-cols-3 gap-3">
+        {metrics.map((m) => (
+          <div key={m.label} className="rounded-xl border border-white/15 bg-white/10 p-4 text-center backdrop-blur">
+            <div className="font-display text-2xl font-extrabold text-white">{m.value}</div>
+            <div className="mt-1 text-xs leading-tight text-white/70">{m.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
-function Hero() {
+function Hero({ hero }) {
+  const idx = hero.highlight ? hero.headline.indexOf(hero.highlight) : -1;
+  const before = idx >= 0 ? hero.headline.slice(0, idx) : hero.headline;
+  const accent = idx >= 0 ? hero.highlight : '';
+  const after = idx >= 0 ? hero.headline.slice(idx + hero.highlight.length) : '';
+
   return (
-    <section className="relative overflow-hidden bg-hero-gradient">
-      {/* faint starfield dots */}
+    <section className="relative overflow-hidden bg-hero-gradient text-white">
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
         style={{
@@ -56,24 +55,28 @@ function Hero() {
         }}
         aria-hidden="true"
       />
-
-      <Container className="relative grid min-h-[560px] grid-cols-1 items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
+      <Container className="relative grid min-h-[600px] grid-cols-1 items-center gap-12 py-16 lg:grid-cols-2 lg:py-24">
         <div>
-          <h1 className="max-w-xl text-4xl font-bold leading-tight sm:text-5xl">
-            <span className="block text-brand-orange">We build made-to-order</span>
-            <span className="block text-white">software teams that are</span>
-            <span className="block text-brand-orange">exclusive to your company</span>
+          {hero.eyebrow && <p className="mb-5 inline-block rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-white/90 sm:text-sm">{hero.eyebrow}</p>}
+          <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl lg:text-[56px] lg:leading-[1.1]">
+            {before}
+            {accent && <span className="text-brand-orange">{accent}</span>}
+            {after}
           </h1>
-
-          <div className="mt-9">
-            <Button to={heroContent.ctaTo} variant="primary">
-              {heroContent.ctaLabel}
-            </Button>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80">{hero.subheadline}</p>
+          <div className="mt-9 flex flex-wrap gap-4">
+            {hero.primaryCta && <Button to={hero.primaryCta.to}>{hero.primaryCta.label}</Button>}
+            {hero.secondaryCta && (
+              <Button to={hero.secondaryCta.to} variant="outline">
+                {hero.secondaryCta.label}
+              </Button>
+            )}
           </div>
+          {hero.trustText && <p className="mt-8 text-sm text-white/60">{hero.trustText}</p>}
         </div>
 
-        <div className="hidden justify-center lg:flex">
-          <NetworkIllustration />
+        <div className="flex justify-center lg:justify-end">
+          <GrowthPanel metrics={hero.metrics} />
         </div>
       </Container>
     </section>

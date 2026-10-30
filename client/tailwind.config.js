@@ -13,15 +13,15 @@ export default {
     extend: {
       colors: {
         navy: {
-          DEFAULT: '#211E5B',
-          dark: '#100E33',
-          light: '#2C2876',
+          DEFAULT: '#0E0147',
+          dark: '#080028',
+          light: '#1B0A66',
         },
         brand: {
           orange: '#E1552D',
           orangeDark: '#C8431F',
-          purple: '#6E2FA8',
-          purpleDark: '#5A2489',
+          purple: '#7A35F0',
+          purpleDark: '#6424D6',
         },
         ink: '#1A1A1A',
       },
@@ -31,11 +31,11 @@ export default {
       },
       backgroundImage: {
         'hero-gradient':
-          'radial-gradient(120% 120% at 80% 10%, #322D82 0%, #211E5B 45%, #100E33 100%)',
+          'radial-gradient(120% 120% at 80% 10%, #2A0F8A 0%, #0E0147 45%, #080028 100%)',
       },
       boxShadow: {
-        dropdown: '0 20px 40px -12px rgba(16, 14, 51, 0.25)',
-        card: '0 10px 30px -10px rgba(16, 14, 51, 0.15)',
+        dropdown: '0 20px 40px -12px rgba(8, 0, 40, 0.25)',
+        card: '0 10px 30px -10px rgba(8, 0, 40, 0.15)',
       },
       keyframes: {
         fadeSlideDown: {

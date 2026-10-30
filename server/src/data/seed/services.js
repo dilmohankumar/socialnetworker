@@ -1,0 +1,338 @@
+export const services = [
+  {
+    slug: 'seo',
+    title: 'Search Engine Optimization',
+    icon: 'search',
+    tagline: 'Rank where your buyers are already searching.',
+    shortDescription:
+      'Technical, on-page and authority-building SEO that compounds into predictable organic traffic and qualified leads.',
+    overview:
+      'SEO is the one channel that gets cheaper the longer you invest in it. We start with a technical and content audit, map your keywords to the buying journey, fix what is holding you back, and then build topical authority with content and links that actually earn rankings — not just impressions.',
+    benefits: [
+      'Predictable organic pipeline that does not depend on ad spend',
+      'Higher-intent traffic from commercial and comparison keywords',
+      'Technical fixes that improve speed, crawlability and Core Web Vitals',
+      'Monthly reporting tied to leads and revenue, not just rankings',
+    ],
+    deliverables: [
+      { title: 'Technical SEO audit', description: 'Crawl, index, speed and structured-data review with a prioritised fix list.' },
+      { title: 'Keyword & content roadmap', description: 'Intent-mapped keyword clusters and a 6-month publishing plan.' },
+      { title: 'On-page optimisation', description: 'Titles, headings, internal links and schema for your highest-value pages.' },
+      { title: 'Authority building', description: 'Digital PR and relevant link acquisition — no private blog networks, ever.' },
+    ],
+    process: [
+      { title: 'Audit', description: 'We benchmark rankings, traffic, technical health and competitors.' },
+      { title: 'Strategy', description: 'Keyword clusters, page priorities and a quarter-by-quarter plan.' },
+      { title: 'Execute', description: 'Fixes, content and links shipped on a weekly cadence.' },
+      { title: 'Report & refine', description: 'Monthly review of leads, rankings and next experiments.' },
+    ],
+    tools: ['Google Search Console', 'Ahrefs', 'Semrush', 'Screaming Frog', 'PageSpeed Insights'],
+    results: [
+      { value: '3.4x', label: 'Average organic traffic growth in 12 months' },
+      { value: '62%', label: 'Average lift in organic leads' },
+      { value: 'Top 3', label: 'Positions for target commercial keywords' },
+    ],
+    faqs: [
+      { question: 'How long does SEO take to show results?', answer: 'Technical fixes can move the needle in weeks, but meaningful ranking and traffic growth usually takes 4–6 months. We share leading indicators from month one.' },
+      { question: 'Do you guarantee rankings?', answer: 'No ethical agency can. We commit to a transparent plan, weekly execution and reporting tied to leads and revenue.' },
+      { question: 'Do you do local SEO?', answer: 'Yes — Google Business Profile optimisation, citations, reviews strategy and location pages are included for local businesses.' },
+    ],
+    startingPrice: '$800 / month',
+    featured: true,
+    order: 1,
+  },
+  {
+    slug: 'google-ads-ppc',
+    title: 'Google Ads & PPC',
+    icon: 'ads',
+    tagline: 'Pay for clicks that turn into customers.',
+    shortDescription:
+      'Search, Shopping, Display and YouTube campaigns managed for profit — with tracking you can trust.',
+    overview:
+      'Most accounts leak budget on broad match, weak landing pages and broken conversion tracking. We rebuild the foundations first — conversion tracking, account structure, negative keywords — and then scale only what is profitable.',
+    benefits: [
+      'Immediate visibility for high-intent searches',
+      'Lower cost per lead through tight structure and negatives',
+      'Full-funnel coverage across Search, Shopping, Performance Max and YouTube',
+      'Weekly optimisation with a transparent spend breakdown',
+    ],
+    deliverables: [
+      { title: 'Account & tracking setup', description: 'GA4, GTM and offline-conversion tracking so every lead is attributed.' },
+      { title: 'Campaign build', description: 'Single-intent ad groups, responsive search ads and extensions.' },
+      { title: 'Landing page recommendations', description: 'Message-match and CRO tweaks that raise conversion rate.' },
+      { title: 'Weekly optimisation', description: 'Bid, query, audience and creative tuning, reported in plain language.' },
+    ],
+    process: [
+      { title: 'Audit & tracking', description: 'Fix measurement before spending another rupee or dollar.' },
+      { title: 'Launch', description: 'Start with proven intent keywords and tight budgets.' },
+      { title: 'Optimise', description: 'Cut waste weekly, double down on winners.' },
+      { title: 'Scale', description: 'Expand to new audiences and channels once unit economics hold.' },
+    ],
+    tools: ['Google Ads', 'Google Tag Manager', 'GA4', 'Looker Studio', 'Optmyzr'],
+    results: [
+      { value: '41%', label: 'Average drop in cost per lead' },
+      { value: '4.2x', label: 'Average return on ad spend (ecommerce)' },
+      { value: '30 days', label: 'Typical time to a stable, profitable account' },
+    ],
+    faqs: [
+      { question: 'What budget do I need?', answer: 'We recommend at least enough to generate 30+ conversions a month so algorithms can learn. That is often $1,000–$3,000 for lead-gen accounts.' },
+      { question: 'Is ad spend included in your fee?', answer: 'No. Ad spend is paid directly to Google from your own account, so you always own the data and the money.' },
+      { question: 'Do you also run Meta and LinkedIn ads?', answer: 'Yes — see Social Media Marketing. We often run paid search and paid social together for full-funnel coverage.' },
+    ],
+    startingPrice: '$700 / month + 10% of ad spend',
+    featured: true,
+    order: 2,
+  },
+  {
+    slug: 'social-media-marketing',
+    title: 'Social Media Marketing',
+    icon: 'social',
+    tagline: 'Build an audience, then turn attention into revenue.',
+    shortDescription:
+      'Organic content and paid social on Instagram, Facebook, LinkedIn and YouTube — built around business goals, not vanity metrics.',
+    overview:
+      'Posting daily is not a strategy. We define who you are talking to, build content pillars that earn attention, and layer paid social on top to reach buyers at scale and retarget the people who already know you.',
+    benefits: [
+      'Consistent brand presence on the platforms your customers use',
+      'Short-form video and creative tested against real engagement data',
+      'Paid social that targets by intent, lookalikes and retargeting',
+      'Community management that turns followers into advocates',
+    ],
+    deliverables: [
+      { title: 'Channel & content strategy', description: 'Audience research, content pillars and a monthly calendar.' },
+      { title: 'Creative production', description: 'Reels, carousels, static posts and ad creative with copy.' },
+      { title: 'Paid social campaigns', description: 'Meta, LinkedIn and YouTube campaigns with creative testing.' },
+      { title: 'Community management', description: 'Replies, DMs and social listening handled within agreed SLAs.' },
+    ],
+    process: [
+      { title: 'Research', description: 'Audience, competitors and platform fit.' },
+      { title: 'Plan', description: 'Pillars, formats and a posting rhythm you can sustain.' },
+      { title: 'Create & publish', description: 'Approval workflow, scheduled posts and ad creatives.' },
+      { title: 'Measure', description: 'Monthly review of reach, engagement, leads and cost per result.' },
+    ],
+    tools: ['Meta Business Suite', 'LinkedIn Campaign Manager', 'Canva', 'Buffer', 'Sprout Social'],
+    results: [
+      { value: '5.8x', label: 'Average follower growth in 6 months' },
+      { value: '2.9%', label: 'Average engagement rate on short-form video' },
+      { value: '37%', label: 'Lower cost per lead on retargeting' },
+    ],
+    faqs: [
+      { question: 'Which platforms should we be on?', answer: 'Only the ones where your buyers actually spend time. B2B usually means LinkedIn and YouTube; consumer brands lean on Instagram and Facebook.' },
+      { question: 'Do I need to appear on camera?', answer: 'Not necessarily. We build formats that fit your comfort level — founder-led, team-led, or faceless motion graphics.' },
+      { question: 'Who owns the accounts?', answer: 'You do. We work through admin access to your accounts and never hold them hostage.' },
+    ],
+    startingPrice: '$600 / month',
+    featured: true,
+    order: 3,
+  },
+  {
+    slug: 'content-marketing',
+    title: 'Content Marketing',
+    icon: 'content',
+    tagline: 'Content that earns trust and ranks.',
+    shortDescription:
+      'Strategy-led blogs, landing pages, guides and case studies written by subject specialists and edited for search.',
+    overview:
+      'Content only works when it answers a real buyer question better than anyone else. We pair keyword research with sales-call insights to produce content that ranks, converts and gives your sales team something to send.',
+    benefits: [
+      'Compounding organic traffic from evergreen assets',
+      'Content mapped to awareness, consideration and decision stages',
+      'Subject-matter-expert interviews instead of generic AI filler',
+      'Repurposing across email, social and sales enablement',
+    ],
+    deliverables: [
+      { title: 'Content strategy', description: 'Topic clusters, editorial calendar and brand voice guide.' },
+      { title: 'Long-form articles & guides', description: 'Researched, expert-reviewed and optimised for search.' },
+      { title: 'Case studies & whitepapers', description: 'Proof assets that shorten your sales cycle.' },
+      { title: 'Content refresh', description: 'Updating decaying posts to recover lost rankings.' },
+    ],
+    process: [
+      { title: 'Discover', description: 'Interview stakeholders, review sales calls, audit existing content.' },
+      { title: 'Plan', description: 'Prioritise topics by traffic potential and business value.' },
+      { title: 'Produce', description: 'Draft, edit, design and publish on schedule.' },
+      { title: 'Distribute & refresh', description: 'Promote through email and social, then update what ages.' },
+    ],
+    tools: ['Ahrefs', 'Surfer SEO', 'Notion', 'Grammarly', 'WordPress'],
+    results: [
+      { value: '210%', label: 'Increase in blog-driven organic sessions' },
+      { value: '48', label: 'Average first-page keywords won per quarter' },
+      { value: '3x', label: 'More sales-qualified leads from content' },
+    ],
+    faqs: [
+      { question: 'Do you use AI to write content?', answer: 'We use AI for research and outlining, but every piece is written or heavily edited by a human specialist and fact-checked.' },
+      { question: 'How many articles do we need?', answer: 'Quality and topical coverage beat volume. Most clients start with 4–8 pieces a month.' },
+      { question: 'Can you write in regional languages?', answer: 'Yes — we produce content in English and Hindi, with other languages through vetted partners.' },
+    ],
+    startingPrice: '$500 / month',
+    featured: true,
+    order: 4,
+  },
+  {
+    slug: 'email-marketing-automation',
+    title: 'Email & Marketing Automation',
+    icon: 'email',
+    tagline: 'Your highest-ROI channel, on autopilot.',
+    shortDescription:
+      'Lifecycle flows, newsletters and CRM automation that nurture leads and bring customers back.',
+    overview:
+      'Email still returns the most per dollar of any channel — if the list is healthy and the messages are relevant. We build welcome, abandoned-cart, post-purchase and re-engagement flows, then segment and test continuously.',
+    benefits: [
+      'Revenue from the audience you already own',
+      'Behaviour-triggered flows that run 24/7',
+      'Better deliverability through list hygiene and authentication',
+      'CRM-connected lead scoring and sales handoff',
+    ],
+    deliverables: [
+      { title: 'Automation blueprint', description: 'Welcome, nurture, cart recovery, win-back and post-purchase journeys.' },
+      { title: 'Email design & copy', description: 'On-brand, mobile-first templates with tested subject lines.' },
+      { title: 'List growth & segmentation', description: 'Lead magnets, forms and dynamic segments.' },
+      { title: 'Deliverability setup', description: 'SPF, DKIM, DMARC and sender reputation monitoring.' },
+    ],
+    process: [
+      { title: 'Audit', description: 'List health, tooling and existing flows.' },
+      { title: 'Map journeys', description: 'Define triggers, segments and success metrics.' },
+      { title: 'Build & launch', description: 'Design, write, QA and go live.' },
+      { title: 'Test & optimise', description: 'A/B tests on timing, offers and creative.' },
+    ],
+    tools: ['Klaviyo', 'HubSpot', 'Mailchimp', 'ActiveCampaign', 'Zapier'],
+    results: [
+      { value: '32%', label: 'Of ecommerce revenue attributed to email flows' },
+      { value: '45%', label: 'Average open rate on segmented campaigns' },
+      { value: '28x', label: 'Typical ROI on lifecycle automation' },
+    ],
+    faqs: [
+      { question: 'Which platform should we use?', answer: 'Klaviyo for ecommerce, HubSpot for B2B with a CRM, and Mailchimp or ActiveCampaign for lean teams. We help you choose and migrate.' },
+      { question: 'Can you clean our old list?', answer: 'Yes. We verify, segment and run a re-permission campaign to protect your sender reputation.' },
+      { question: 'Do you handle WhatsApp and SMS?', answer: 'Yes, through approved providers, as part of omnichannel lifecycle programmes.' },
+    ],
+    startingPrice: '$450 / month',
+    featured: true,
+    order: 5,
+  },
+  {
+    slug: 'website-design-cro',
+    title: 'Website Design & CRO',
+    icon: 'cro',
+    tagline: 'Turn the traffic you already have into more customers.',
+    shortDescription:
+      'Fast, conversion-focused websites and landing pages, continuously improved with research and A/B testing.',
+    overview:
+      'Driving more traffic to a leaky site just wastes money. We combine analytics, session recordings and user research to find where visitors drop off, then redesign and test until conversion rate climbs.',
+    benefits: [
+      'Faster pages that rank better and convert more',
+      'Clear messaging and CTAs matched to each traffic source',
+      'Evidence-based changes, validated by A/B tests',
+      'Mobile-first layouts that work for most of your visitors',
+    ],
+    deliverables: [
+      { title: 'Conversion audit', description: 'Funnel analysis, heatmaps and recordings with a ranked fix list.' },
+      { title: 'Landing pages', description: 'High-converting pages for campaigns, built and QA\'d.' },
+      { title: 'Website design & build', description: 'WordPress, Webflow or Shopify builds with SEO baked in.' },
+      { title: 'A/B testing programme', description: 'Hypothesis-driven experiments with documented learnings.' },
+    ],
+    process: [
+      { title: 'Research', description: 'Analytics, heatmaps, surveys and customer calls.' },
+      { title: 'Hypothesise', description: 'Prioritise changes by impact and effort.' },
+      { title: 'Design & build', description: 'Ship new pages or iterate on existing ones.' },
+      { title: 'Test & learn', description: 'Run experiments to statistical significance.' },
+    ],
+    tools: ['Hotjar', 'Microsoft Clarity', 'VWO', 'Figma', 'Webflow', 'Shopify'],
+    results: [
+      { value: '+38%', label: 'Average lift in landing-page conversion rate' },
+      { value: '<2s', label: 'Typical load time after optimisation' },
+      { value: '1 in 3', label: 'Experiments produce a statistically significant win' },
+    ],
+    faqs: [
+      { question: 'Do you build full websites?', answer: 'Yes — on WordPress, Webflow and Shopify. Every build includes technical SEO and analytics setup.' },
+      { question: 'How much traffic do we need to A/B test?', answer: 'Roughly 1,000+ conversions a quarter on the tested page. Below that, we focus on research-led changes instead.' },
+      { question: 'Can you fix our slow site?', answer: 'Yes. Performance work — image, script and hosting optimisation — is usually quick wins with a big impact.' },
+    ],
+    startingPrice: '$900 one-time / $400 per month for CRO',
+    featured: true,
+    order: 6,
+  },
+  {
+    slug: 'analytics-tracking',
+    title: 'Analytics & Conversion Tracking',
+    icon: 'analytics',
+    tagline: 'Know exactly what is working — and what is not.',
+    shortDescription:
+      'GA4, Google Tag Manager, server-side tracking and dashboards that connect marketing spend to revenue.',
+    overview:
+      'You cannot optimise what you cannot measure. We implement clean, privacy-compliant tracking, connect your CRM and ad platforms, and build dashboards your team will actually use in meetings.',
+    benefits: [
+      'Trustworthy numbers across ads, SEO and email',
+      'Offline conversions and CRM revenue fed back to ad platforms',
+      'Consent-mode and privacy-compliant implementation',
+      'Executive dashboards in Looker Studio, updated automatically',
+    ],
+    deliverables: [
+      { title: 'Measurement plan', description: 'KPIs, events and conversions defined before anything is tagged.' },
+      { title: 'GA4 & GTM implementation', description: 'Clean event schema, e-commerce tracking and QA.' },
+      { title: 'Server-side tracking', description: 'Improved data quality and ad-platform match rates.' },
+      { title: 'Reporting dashboards', description: 'Looker Studio dashboards for leadership and channel owners.' },
+    ],
+    process: [
+      { title: 'Audit', description: 'Find broken, duplicated or missing tracking.' },
+      { title: 'Plan', description: 'Define events, parameters and data flows.' },
+      { title: 'Implement & QA', description: 'Tag, test and validate in staging and production.' },
+      { title: 'Report', description: 'Dashboards and a handover your team can maintain.' },
+    ],
+    tools: ['GA4', 'Google Tag Manager', 'Looker Studio', 'BigQuery', 'Segment'],
+    results: [
+      { value: '98%', label: 'Conversion-tracking accuracy after audit' },
+      { value: '+25%', label: 'Better ad-platform match rate with server-side tagging' },
+      { value: '10 hrs', label: 'Reporting time saved per month' },
+    ],
+    faqs: [
+      { question: 'Do you migrate Universal Analytics data?', answer: 'Historic UA data has been shut down by Google, but we can set up exports and build a fresh, accurate GA4 baseline.' },
+      { question: 'Are you GDPR / DPDP compliant?', answer: 'We implement consent mode and cookie banners aligned with GDPR and India\'s DPDP Act, but you should confirm with your legal counsel.' },
+      { question: 'Can you connect our CRM?', answer: 'Yes — HubSpot, Salesforce, Zoho and custom CRMs via API or Zapier.' },
+    ],
+    startingPrice: '$600 one-time setup',
+    featured: true,
+    order: 7,
+  },
+  {
+    slug: 'ecommerce-marketing',
+    title: 'Ecommerce Marketing',
+    icon: 'cart',
+    tagline: 'Grow revenue, not just traffic, for your online store.',
+    shortDescription:
+      'Shopping ads, marketplace growth, lifecycle email and CRO — all aimed at higher revenue per visitor.',
+    overview:
+      'Ecommerce margins are tight, so every channel needs to earn its keep. We run an integrated programme across Google Shopping, Meta, email and onsite conversion, focusing on blended ROAS and customer lifetime value.',
+    benefits: [
+      'Product feed optimisation for Google Merchant Center and Meta Catalog',
+      'Blended ROAS targets tied to your margins',
+      'Retention flows that raise repeat-purchase rate',
+      'Marketplace support for Amazon and Flipkart listings',
+    ],
+    deliverables: [
+      { title: 'Feed optimisation', description: 'Titles, attributes and images that win Shopping impressions.' },
+      { title: 'Paid media management', description: 'Google Shopping, Performance Max, Meta Advantage+ and retargeting.' },
+      { title: 'Lifecycle email & SMS', description: 'Cart recovery, post-purchase and win-back journeys.' },
+      { title: 'Merchandising CRO', description: 'Product page, collection page and checkout improvements.' },
+    ],
+    process: [
+      { title: 'Profit audit', description: 'Margins, AOV, LTV and channel contribution.' },
+      { title: 'Foundations', description: 'Feed, tracking and site fixes.' },
+      { title: 'Scale', description: 'Expand winning campaigns and audiences.' },
+      { title: 'Retain', description: 'Lifecycle programmes to raise repeat revenue.' },
+    ],
+    tools: ['Shopify', 'WooCommerce', 'Google Merchant Center', 'Meta Catalog', 'Klaviyo'],
+    results: [
+      { value: '4.2x', label: 'Blended ROAS on managed stores' },
+      { value: '+27%', label: 'Increase in repeat purchase rate' },
+      { value: '-22%', label: 'Customer acquisition cost after 6 months' },
+    ],
+    faqs: [
+      { question: 'Which platforms do you support?', answer: 'Shopify, WooCommerce, Magento and BigCommerce, plus marketplace accounts on Amazon and Flipkart.' },
+      { question: 'Do you manage creative too?', answer: 'Yes — product photography direction, UGC sourcing and ad creative are available as add-ons.' },
+      { question: 'What revenue do I need to start?', answer: 'Stores doing $10k+/month see the best results, but we also help earlier-stage brands build foundations.' },
+    ],
+    startingPrice: '$900 / month',
+    featured: true,
+    order: 8,
+  },
+];

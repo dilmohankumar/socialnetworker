@@ -1,124 +1,67 @@
-import { useEffect, useState } from 'react';
-import {
-  HiOutlineBriefcase,
-  HiOutlineHeart,
-  HiOutlinePlusCircle,
-  HiOutlineEmojiHappy,
-  HiOutlineClock,
-  HiOutlineGlobeAlt,
-  HiOutlineSparkles,
-} from 'react-icons/hi';
+import Async from '../components/common/Async.jsx';
 import Container from '../components/common/Container.jsx';
-import { getPageContent, getJobPostings } from '../services/api.js';
-
-const SECTION_ICONS = {
-  Insurance: HiOutlineHeart,
-  'Free Medical Camp': HiOutlinePlusCircle,
-  Entertainment: HiOutlineEmojiHappy,
-  'Flexible Timing': HiOutlineClock,
-  'Onsite Opportunities': HiOutlineGlobeAlt,
-};
+import PageHero from '../components/common/PageHero.jsx';
+import { useSite } from '../context/SiteContext.jsx';
+import { useApi } from '../hooks/useApi.js';
+import { usePageMeta } from '../hooks/usePageMeta.js';
+import { getJobs } from '../services/api.js';
 
 function Careers() {
-  const [page, setPage] = useState(null);
-  const [jobs, setJobs] = useState([]);
-  const [status, setStatus] = useState('loading');
-
-  useEffect(() => {
-    let cancelled = false;
-    Promise.all([getPageContent('careers'), getJobPostings()])
-      .then(([pageData, jobData]) => {
-        if (cancelled) return;
-        setPage(pageData);
-        setJobs(jobData || []);
-        setStatus('ready');
-      })
-      .catch(() => {
-        if (!cancelled) setStatus('error');
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  if (status === 'loading') {
-    return (
-      <Container className="py-24">
-        <div className="animate-pulse space-y-4">
-          <div className="h-10 w-1/3 rounded bg-gray-200" />
-          <div className="h-4 w-full rounded bg-gray-200" />
-        </div>
-      </Container>
-    );
-  }
-
-  if (status === 'error') {
-    return (
-      <Container className="py-24 text-center">
-        <p className="text-lg text-gray-600">Something went wrong loading careers. Please try again shortly.</p>
-      </Container>
-    );
-  }
+  const { settings } = useSite();
+  const jobs = useApi(getJobs, []);
+  usePageMeta(`Careers | ${settings.brand.name}`, `Join the ${settings.brand.name} team.`);
 
   return (
-    <section className="py-16 md:py-24">
-      <Container>
-        <h1 className="mb-6 text-4xl font-bold tracking-tight text-ink sm:text-5xl">
-          {page?.title || 'Be a Part of Something Bigger'}
-        </h1>
-        {page?.image && (
-          <div className="mb-10 overflow-hidden rounded-xl shadow-card">
-            <img
-              src={page.image}
-              alt={page.title}
-              loading="lazy"
-              className="h-full max-h-96 w-full object-cover"
-              onError={(e) => {
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-          </div>
-        )}
-        {page?.intro && <p className="mb-12 max-w-4xl text-lg leading-relaxed text-gray-700">{page.intro}</p>}
-
-        <h2 className="mb-4 flex items-center gap-2 text-2xl font-semibold text-ink">
-          <HiOutlineBriefcase className="h-6 w-6 text-brand-orange" aria-hidden="true" />
-          Open Positions
-        </h2>
-        {jobs.length === 0 ? (
-          <p className="mb-12 text-gray-600">Looking for opportunities...</p>
-        ) : (
-          <div className="mb-12 space-y-4">
-            {jobs.map((job) => (
-              <div key={job.title} className="rounded-xl bg-gray-50 p-6 shadow-card">
-                <h3 className="text-lg font-semibold text-ink">{job.title}</h3>
-                <p className="text-sm text-gray-600">
-                  {job.experience} {job.location && `· ${job.location}`}
-                </p>
-                {job.details && <p className="mt-2 text-sm text-gray-700">{job.details}</p>}
-              </div>
-            ))}
-          </div>
-        )}
-
-        {page?.sections?.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {page.sections.map((section) => {
-              const Icon = SECTION_ICONS[section.heading] || HiOutlineSparkles;
-              return (
-                <div key={section.heading} className="rounded-xl bg-gray-50 p-6 shadow-card">
-                  <div className="mb-2 flex items-center gap-2">
-                    <Icon className="h-5 w-5 text-brand-orange" aria-hidden="true" />
-                    <h3 className="text-lg font-semibold text-ink">{section.heading}</h3>
-                  </div>
-                  <p className="leading-relaxed text-gray-700">{section.body}</p>
+    <>
+      <PageHero eyebrow="Careers" title="Build your marketing career with us" subtitle="We hire curious, data-minded people and give them real ownership from week one." />
+      <section className="py-16 md:py-24">
+        <Container className="max-w-4xl">
+          <Async query={jobs} inline>
+            {(items) =>
+              items.length === 0 ? (
+                <div className="rounded-2xl bg-gray-50 p-10 text-center">
+                  <p className="text-lg text-gray-700">No open roles right now — but we&apos;re always happy to hear from great people.</p>
+                  <a href={`mailto:${settings.contact.email}`} className="mt-4 inline-block font-semibold text-brand-purple hover:underline">
+                    {settings.contact.email}
+                  </a>
                 </div>
-              );
-            })}
-          </div>
-        )}
-      </Container>
-    </section>
+              ) : (
+                <ul className="space-y-5">
+                  {items.map((job) => (
+                    <li key={job._id} className="rounded-2xl border border-gray-100 p-7 shadow-card">
+                      <div className="flex flex-wrap items-start justify-between gap-4">
+                        <div>
+                          <h2 className="text-xl font-bold text-ink">{job.title}</h2>
+                          <p className="mt-1 text-sm text-gray-500">
+                            {[job.department, job.type, job.experience, job.location].filter(Boolean).join(' · ')}
+                          </p>
+                        </div>
+                        <a
+                          href={`mailto:${settings.contact.email}?subject=${encodeURIComponent(`Application: ${job.title}`)}`}
+                          className="rounded-full bg-brand-orange px-5 py-2.5 text-sm font-semibold text-white hover:bg-brand-orangeDark"
+                        >
+                          Apply now
+                        </a>
+                      </div>
+                      {job.details && <p className="mt-4 leading-relaxed text-gray-700">{job.details}</p>}
+                      {job.skills?.length > 0 && (
+                        <ul className="mt-4 flex flex-wrap gap-2">
+                          {job.skills.map((s) => (
+                            <li key={s} className="rounded-full bg-gray-100 px-3 py-1 text-xs text-gray-600">
+                              {s}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )
+            }
+          </Async>
+        </Container>
+      </section>
+    </>
   );
 }
 

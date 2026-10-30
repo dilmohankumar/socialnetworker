@@ -1,0 +1,98 @@
+export const settings = {
+  key: 'main',
+  brand: {
+    name: 'socialnetworker',
+    tagline: 'Digital marketing that grows revenue',
+    yearsExperience: 10,
+  },
+  seo: {
+    title: 'socialnetworker | Digital Marketing Agency — SEO, PPC, Social & Content',
+    description:
+      '10+ years of results-driven digital marketing. SEO, Google Ads, social media, content, email automation and analytics that turn traffic into revenue.',
+  },
+  nav: [
+    { label: 'Services', to: '/services', source: 'services' },
+    { label: 'Industries', to: '/industries', source: 'industries' },
+    { label: 'Case Studies', to: '/case-studies' },
+    { label: 'Pricing', to: '/pricing' },
+    { label: 'Blog', to: '/blog' },
+    { label: 'About', to: '/about' },
+  ],
+  hero: {
+    eyebrow: '10+ years • 250+ brands • $18M+ in ad spend managed',
+    headline: 'Digital marketing that turns clicks into customers',
+    highlight: 'turns clicks into customers',
+    subheadline:
+      'SEO, paid ads, social, content and email — planned, executed and measured by senior specialists, with every rupee tied to revenue.',
+    primaryCta: { label: 'Get a Free Marketing Audit', to: '/contact?type=audit' },
+    secondaryCta: { label: 'See Our Results', to: '/case-studies' },
+    metrics: [
+      { label: 'Organic traffic', value: '+214%' },
+      { label: 'Cost per lead', value: '-41%' },
+      { label: 'Return on ad spend', value: '4.6x' },
+    ],
+    trustText: 'Trusted by growing brands across India, the Middle East, the UK and the US',
+  },
+  stats: [
+    { value: '10+', label: 'Years of experience' },
+    { value: '250+', label: 'Brands grown' },
+    { value: '$18M+', label: 'Ad spend managed' },
+    { value: '92%', label: 'Client retention' },
+  ],
+  process: {
+    eyebrow: 'How we work',
+    heading: 'A simple process built for measurable growth',
+    subheading: 'No black boxes. You know what we are doing, why we are doing it and what it delivered.',
+    steps: [
+      { title: 'Discover', description: 'We learn your business, customers, margins and goals — and audit what you are doing today.', icon: 'search' },
+      { title: 'Strategise', description: 'A 90-day roadmap that prioritises the channels and tactics with the highest expected return.', icon: 'target' },
+      { title: 'Execute', description: 'Senior specialists launch campaigns, content and fixes on a weekly cadence.', icon: 'rocket' },
+      { title: 'Measure', description: 'Live dashboards and monthly reviews tie every activity to leads and revenue.', icon: 'chart' },
+      { title: 'Scale', description: 'We double down on what works, cut what does not, and expand into new channels.', icon: 'growth' },
+    ],
+  },
+  sectionCopy: {
+    clients: { text: 'Trusted by growing brands' },
+    services: { eyebrow: 'What we do', heading: 'Full-funnel digital marketing services', subheading: 'Everything you need to get found, win trust and convert — under one roof.' },
+    caseStudies: { eyebrow: 'Proof, not promises', heading: 'Results our clients can measure', subheading: 'A few recent engagements and the numbers they produced.' },
+    industries: { eyebrow: 'Industries', heading: 'Marketing that understands your market', subheading: 'Playbooks refined across the sectors we work with most.' },
+    testimonials: { eyebrow: 'Client love', heading: 'What our clients say' },
+    pricing: { eyebrow: 'Pricing', heading: 'Simple, transparent packages', subheading: 'Choose a starting point — every plan is tailored after a free audit. Ad spend is paid directly to platforms.' },
+    blog: { eyebrow: 'Insights', heading: 'Latest from the blog', subheading: 'Practical marketing playbooks, straight from the team.' },
+    faq: { eyebrow: 'FAQ', heading: 'Questions we hear a lot' },
+  },
+  cta: {
+    heading: 'Get a free marketing audit',
+    text: 'Tell us your website and we will send a personalised report covering SEO, ads, tracking and quick wins — within one business day. No obligation.',
+    buttonLabel: 'Request my free audit',
+  },
+  tools: ['Google Ads', 'GA4', 'Google Tag Manager', 'Meta Ads', 'LinkedIn Ads', 'Ahrefs', 'Semrush', 'HubSpot', 'Klaviyo', 'Looker Studio', 'Shopify', 'WordPress'],
+  certifications: [
+    { name: 'Google Ads Certified', issuer: 'Google' },
+    { name: 'Google Analytics Certified', issuer: 'Google' },
+    { name: 'HubSpot Inbound Marketing', issuer: 'HubSpot' },
+    { name: 'Meta Certified Marketing Professional', issuer: 'Meta' },
+  ],
+  contact: {
+    heading: 'Let\'s talk about your growth',
+    subheading: 'Tell us about your business and goals. A senior strategist will reply within one business day.',
+    email: 'kdilmohan01@gmail.com',
+    phones: [{ label: 'India', number: '+91 99888 77663' }],
+    services: ['SEO', 'Google Ads & PPC', 'Social Media Marketing', 'Content Marketing', 'Email & Automation', 'Website & CRO', 'Analytics & Tracking', 'Ecommerce Marketing', 'Not sure yet'],
+    budgets: ['Under $1,000 / month', '$1,000 – $3,000 / month', '$3,000 – $10,000 / month', '$10,000+ / month'],
+  },
+  social: [{ label: 'Instagram', icon: 'instagram', href: 'https://www.instagram.com/socialnetworker.in/' }],
+  footer: {
+    about: 'socialnetworker is a results-driven digital marketing partner. We help ambitious brands get found, win trust and turn visitors into customers.',
+    company: [
+      { label: 'About', to: '/about' },
+      { label: 'Case Studies', to: '/case-studies' },
+      { label: 'Pricing', to: '/pricing' },
+      { label: 'Blog', to: '/blog' },
+      { label: 'Careers', to: '/careers' },
+      { label: 'Contact', to: '/contact' },
+    ],
+    copyright: '© 2026 socialnetworker. All rights reserved.',
+    disclaimer: 'Results shown are from past client engagements and are not a guarantee of future performance.',
+  },
+};

@@ -21,6 +21,7 @@ function Button({
   type = 'button',
   variant = 'primary',
   withArrow = false,
+  disabled = false,
   className = '',
 }) {
   const classes = `inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
@@ -29,7 +30,7 @@ function Button({
 
   if (to) {
     return (
-      <Link to={to} className={classes}>
+      <Link to={to} onClick={onClick} className={classes}>
         {children}
         {withArrow && <HiArrowRight className="text-base" aria-hidden="true" />}
       </Link>
@@ -37,7 +38,7 @@ function Button({
   }
 
   return (
-    <button type={type} onClick={onClick} className={classes}>
+    <button type={type} onClick={onClick} disabled={disabled} className={`${classes} disabled:cursor-not-allowed disabled:opacity-60`}>
       {children}
       {withArrow && <HiArrowRight className="text-base" aria-hidden="true" />}
     </button>

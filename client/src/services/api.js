@@ -1,131 +1,58 @@
 import axios from 'axios';
-import {
-  services as mockServices,
-  locations as mockLocations,
-  aboutContent as mockAbout,
-  pageContent as mockPageContent,
-  teamMembers as mockTeamMembers,
-  clients as mockClients,
-  partners as mockPartners,
-  newsPosts as mockNewsPosts,
-  events as mockEvents,
-  workProjects as mockWorkProjects,
-} from '../data/mockData.js';
-
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-const client = axios.create({ baseURL, timeout: 4000 });
 
 /**
- * Every getter below tries the real API first and silently falls back to
- * local mock data if the backend isn't running yet (or the request fails).
- * This means components never need an if/else for "is the API ready" —
- * once the backend is seeded and running, real data flows through
- * automatically with zero component changes.
+ * API base URL, in priority order:
+ *  1. window.__APP_CONFIG__.API_URL  (public/config.js — editable after deploy, no rebuild)
+ *  2. VITE_API_URL                   (local dev / build-time)
+ *  3. localhost -> http://localhost:5000/api, otherwise same origin (<this-site>/api, e.g. behind Nginx)
  */
+function resolveBaseURL() {
+  const configured = window.__APP_CONFIG__?.API_URL || import.meta.env.VITE_API_URL;
+  if (configured) return configured;
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') return 'http://localhost:5000/api';
+  return `${window.location.origin}/api`;
+}
 
-export async function getServices() {
-  try {
-    const { data } = await client.get('/services');
-    return data?.length ? data : mockServices;
-  } catch (err) {
-    return mockServices;
+const baseURL = resolveBaseURL();
+
+// Long timeout: free hosts cold-start slowly, and there is no local fallback data to show instead.
+const client = axios.create({ baseURL, timeout: 60000 });
+
+/** Normalises axios errors into { message, status } so the UI can branch on 404 vs. network failure. */
+client.interceptors.response.use(
+  (res) => res.data,
+  (err) => {
+    const apiError = new Error(
+      err.response?.data?.message ||
+        (err.code === 'ECONNABORTED' ? 'The server took too long to respond.' : 'Unable to reach the server.')
+    );
+    apiError.status = err.response?.status || 0;
+    return Promise.reject(apiError);
   }
-}
+);
 
-export async function getLocations() {
-  try {
-    const { data } = await client.get('/locations');
-    return data?.length ? data : mockLocations;
-  } catch (err) {
-    return mockLocations;
-  }
-}
+export const getSettings = () => client.get('/settings');
+export const getHome = () => client.get('/home');
 
-export async function getAboutContent() {
-  try {
-    const { data } = await client.get('/about');
-    return data || mockAbout;
-  } catch (err) {
-    return mockAbout;
-  }
-}
+export const getServices = () => client.get('/services');
+export const getService = (slug) => client.get(`/services/${slug}`);
 
-export async function getPageContent(slug) {
-  try {
-    const { data } = await client.get(`/pages/${slug}`);
-    return data || mockPageContent[slug] || null;
-  } catch (err) {
-    return mockPageContent[slug] || null;
-  }
-}
+export const getIndustries = () => client.get('/industries');
+export const getIndustry = (slug) => client.get(`/industries/${slug}`);
 
-export async function getTeamMembers() {
-  try {
-    const { data } = await client.get('/team');
-    return data?.length ? data : mockTeamMembers;
-  } catch (err) {
-    return mockTeamMembers;
-  }
-}
+export const getCaseStudies = (params) => client.get('/case-studies', { params });
+export const getCaseStudy = (slug) => client.get(`/case-studies/${slug}`);
 
-export async function getClients() {
-  try {
-    const { data } = await client.get('/partners', { params: { type: 'client' } });
-    return data?.length ? data : mockClients;
-  } catch (err) {
-    return mockClients;
-  }
-}
+export const getBlogPosts = (params) => client.get('/blog', { params });
+export const getBlogPost = (slug) => client.get(`/blog/${slug}`);
 
-export async function getPartners() {
-  try {
-    const { data } = await client.get('/partners', { params: { type: 'partner' } });
-    return data?.length ? data : mockPartners;
-  } catch (err) {
-    return mockPartners;
-  }
-}
+export const getTeam = () => client.get('/team');
+export const getPackages = () => client.get('/packages');
+export const getFaqs = (params) => client.get('/faqs', { params });
+export const getJobs = () => client.get('/jobs');
+export const getPage = (slug) => client.get(`/pages/${slug}`);
 
-export async function getNewsPosts() {
-  try {
-    const { data } = await client.get('/news');
-    return data?.length ? data : mockNewsPosts;
-  } catch (err) {
-    return mockNewsPosts;
-  }
-}
-
-export async function getEvents() {
-  try {
-    const { data } = await client.get('/events');
-    return data?.length ? data : mockEvents;
-  } catch (err) {
-    return mockEvents;
-  }
-}
-
-export async function getWorkProjects() {
-  try {
-    const { data } = await client.get('/work-projects');
-    return data?.length ? data : mockWorkProjects;
-  } catch (err) {
-    return mockWorkProjects;
-  }
-}
-
-export async function getJobPostings() {
-  try {
-    const { data } = await client.get('/jobs');
-    return data || [];
-  } catch (err) {
-    return [];
-  }
-}
-
-export async function submitContactForm(payload) {
-  const { data } = await client.post('/contact', payload);
-  return data;
-}
+export const submitContactForm = (payload) => client.post('/contact', payload);
 
 export default client;
